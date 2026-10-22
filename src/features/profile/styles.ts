@@ -1,0 +1,28 @@
+import { StyleSheet } from 'react-native';
+import { colors as c, spacing as sp, radius as r, fontSize as f, size } from '@/constants/design-tokens';
+export const p = StyleSheet.create({
+  viewport: { flex: 1, minHeight: 0 },
+  content: { paddingHorizontal: sp.lg, paddingTop: sp.sm, paddingBottom: sp.xxxl, gap: sp.xxl },
+  hero: { flexShrink: 0, padding: sp.xl, borderRadius: r.card, backgroundColor: c.selected, gap: sp.lg },
+  identity: { flexDirection: 'row', gap: sp.lg, alignItems: 'center' },
+  avatar: { width: size.profileAvatar, height: size.profileAvatar, borderRadius: r.full, backgroundColor: c.surface, alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
+  info: { flex: 1, minWidth: 0, gap: sp.xs },
+  name: { fontSize: f.brand, lineHeight: 34, fontWeight: '700', color: c.nightText },
+  meta: { fontSize: f.label, lineHeight: 22, color: c.muted },
+  privacy: { flexDirection: 'row', gap: sp.sm, alignItems: 'flex-start' },
+  stats: { flexDirection: 'row', borderTopWidth: size.border, borderColor: c.inputBorder, paddingTop: sp.lg },
+  stat: { flex: 1, alignItems: 'center', gap: sp.xs },
+  count: { fontSize: f.brand, fontWeight: '700', color: c.nightText },
+  statLabel: { fontSize: f.caption, lineHeight: 20, color: c.nightMuted, textAlign: 'center' },
+  section: { flexShrink: 0, gap: sp.md },
+  sectionHeading: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: sp.sm },
+  sectionTitle: { fontSize: f.section, lineHeight: 28, fontWeight: '600', color: c.ink, flex: 1 },
+  list: { backgroundColor: c.surface, borderRadius: r.card, paddingHorizontal: sp.lg },
+  page: { flexDirection: 'row', alignItems: 'center', gap: sp.md, paddingVertical: sp.lg, borderBottomWidth: size.border, borderColor: c.border },
+  last: { borderBottomWidth: 0 },
+  pageName: { fontSize: f.label, lineHeight: 22, color: c.ink, fontWeight: '600' },
+  pageMeta: { fontSize: f.caption, lineHeight: 20, color: c.muted },
+  compactButton: { minWidth: size.touchTarget, minHeight: size.touchTarget, alignItems: 'center', justifyContent: 'center', borderRadius: r.full, backgroundColor: c.selected },
+  footer: { gap: sp.sm, alignItems: 'center', flexShrink: 0 },
+  heroMeta: { fontSize: f.label, lineHeight: 22, color: c.nightText },
+});
