@@ -1,0 +1,71 @@
+{
+  "colors": {
+    "purple": "#7747B8",
+    "ink": "#1F2937",
+    "muted": "#5B6472",
+    "border": "#E1E4E9",
+    "background": "#EEEFF1",
+    "surface": "#FFFFFF",
+    "selected": "#EADFF7",
+    "inputBorder": "#B9C0CB",
+    "urgentBackground": "#FFF0EF",
+    "urgentBorder": "#F7DFD9",
+    "urgentText": "#974627",
+    "success": "#38734C",
+    "heroBackground": "#A684BB",
+    "night": "#09090B",
+    "nightText": "#F8F6FC",
+    "nightMuted": "#B5AFBD",
+    "nightInput": "#202023",
+    "nightBorder": "#39343F",
+    "photoOverlay": "#18111FD9",
+    "gradientPurple": "#563573",
+    "gradientGray": "#19161F",
+    "canvasPurple": "#ECE8F1",
+    "canvasGray": "#F1F2F3"
+  },
+  "spacing": {
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 20,
+    "xxl": 24,
+    "xxxl": 32
+  },
+  "radius": {
+    "control": 24,
+    "card": 28,
+    "full": 999,
+    "hero": 28,
+    "checkbox": 2
+  },
+  "fontSize": {
+    "caption": 12,
+    "label": 14,
+    "body": 16,
+    "section": 18,
+    "brand": 24,
+    "title": 28,
+    "display": 36
+  },
+  "lineHeight": {
+    "caption": 20,
+    "label": 22,
+    "body": 26,
+    "heading": 28
+  },
+  "size": {
+    "touchTarget": 48,
+    "avatar": 40,
+    "contentWidth": 560,
+    "border": 1,
+    "icon": 20,
+    "tabIcon": 24,
+    "profileAvatar": 80,
+    "checkbox": 18
+  },
+  "opacity": {
+    "disabled": 0.5
+  }
+}
