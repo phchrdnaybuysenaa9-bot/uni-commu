@@ -4,6 +4,7 @@ import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-nati
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors, spacing, radius, size, fontSize } from '@/constants/design-tokens';
 import { Action } from './action';
+import { useResponsiveLayout } from '@/hooks/use-responsive-layout';
 export type FilterValues = { faculty: string; category: string; date: string };
 export const defaultFilters: FilterValues = { faculty: 'ทุกคณะ', category: 'ทั้งหมด', date: 'ทุกช่วงเวลา' };
 const groups: { key: keyof FilterValues; label: string; hint?: string; options: string[] }[] = [
@@ -14,8 +15,9 @@ const groups: { key: keyof FilterValues; label: string; hint?: string; options: 
 /** Mount on open: draft edits are discarded on cancel/back/outside tap. */
 export function FilterOverlay({ value, onApply, onClose }: { value: FilterValues; onApply: (value: FilterValues) => void; onClose: () => void }) {
   const [draft, setDraft] = useState(value);
+  const { isTabletLayout } = useResponsiveLayout();
   return <Modal transparent visible animationType="none" onRequestClose={onClose}>
-    <SafeAreaView style={f.overlay}>
+    <SafeAreaView style={[f.overlay, isTabletLayout && f.tabletOverlay]}>
       <Pressable style={StyleSheet.absoluteFill} onPress={onClose} accessibilityRole="button" accessibilityLabel="ปิดตัวกรองโดยไม่บันทึก" />
       <View style={f.sheet} accessibilityViewIsModal>
         <View style={f.header}><Text accessibilityRole="header" style={f.title}>เลือกข่าวที่สนใจ</Text><Action label="ปิด" onPress={onClose} /></View>
@@ -29,6 +31,7 @@ export function FilterOverlay({ value, onApply, onClose }: { value: FilterValues
 }
 const f = StyleSheet.create({
   overlay: { flex: 1, backgroundColor: colors.photoOverlay, justifyContent: 'flex-end', alignItems: 'center', padding: spacing.lg },
+  tabletOverlay: { justifyContent: 'center', padding: spacing.xxxl },
   sheet: { width: '100%', maxWidth: size.contentWidth, maxHeight: '90%', backgroundColor: colors.surface, borderRadius: radius.card, overflow: 'hidden', flexShrink: 1 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: spacing.xl, paddingVertical: spacing.md, borderBottomWidth: size.border, borderColor: colors.border, gap: spacing.sm },
   title: { fontSize: fontSize.section, fontWeight: '700', color: colors.ink, flex: 1 },

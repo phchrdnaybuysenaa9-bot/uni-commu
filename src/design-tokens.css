@@ -49,6 +49,9 @@
   --size-touch-target: 48px;
   --size-avatar: 40px;
   --size-content-width: 560px;
+  --size-tablet-breakpoint: 768px;
+  --size-tablet-content-width: 720px;
+  --size-auth-wide-width: 1040px;
   --size-border: 1px;
   --size-icon: 20px;
   --size-tab-icon: 24px;

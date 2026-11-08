@@ -1,5 +1,8 @@
 # UniCommu design
 
+## Tablet adaptation (2026-10-24)
+Available window width controls layout, including rotation and split-screen. Below 768 logical pixels, preserve the existing 560 maximum reading width. At 768 and above, all five content screens share a centered 720 maximum width. Authentication and filter forms retain a 560 maximum width. Tablet filters open in the center; phone filters remain bottom sheets. Bottom navigation destinations stay grouped within 720 logical pixels. Portrait and landscape are enabled, with iPad support and multitasking enabled in Expo config. Native iPad validation is still required on hardware or a simulator; browser checks only verify web layout.
+
 Mobile community board in Operate mode. User-approved purple, white and gray, inspired by the supplied university portal. Build component structure directly; no generated imagery is needed.
 
 ## Tokens
@@ -57,3 +60,6 @@ Canvas stays light gray. Post cards and profile identity panel now transition #5
 
 ## Reusing the approved accent
 The purple-to-black gradient now also appears on authentication welcome panels, primary action buttons, urgent announcements and compact saved/notification summaries. AccentBanner centralizes summary layout; GradientSurface remains the shared panel implementation; Action owns primary-button gradients. Dark panels use white text and icons. Regular announcements, inputs and filter controls retain light surfaces. No functionality, navigation or data persistence added by this visual extension.
+
+## Authentication layout refinement
+Authentication scroll content grows to fill the available viewport. Tablet layouts center the complete authentication shell vertically when it fits; longer forms remain scrollable. Landscape windows at least 768 logical pixels wide use a centered two-pane shell up to 1040 wide with a 24-point gutter. Welcome content sits on the left and the form on the right. Narrow windows and large font scale use the single-column layout. Keyboard avoidance remains active on iOS; native keyboard and iPad validation still require a device.

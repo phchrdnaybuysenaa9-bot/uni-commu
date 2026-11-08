@@ -3,11 +3,13 @@
     "name": "uni-commu",
     "slug": "uni-commu",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "unicommu",
     "userInterfaceStyle": "automatic",
     "ios": {
+      "supportsTablet": true,
+      "requireFullScreen": false,
       "icon": "./assets/expo.icon"
     },
     "android": {

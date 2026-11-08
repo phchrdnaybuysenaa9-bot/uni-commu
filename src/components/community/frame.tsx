@@ -4,6 +4,7 @@ import { KeyboardAvoidingView, Platform, Pressable, Text, View } from 'react-nat
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { size } from '@/constants/design-tokens';
+import { useResponsiveLayout } from '@/hooks/use-responsive-layout';
 import { Icon } from './icon';
 import { palette, s } from './styles';
 const HeaderContext = createContext({ title: '', subtitle: '' });
@@ -16,5 +17,6 @@ export function PageHeader() {
   </View>;
 }
 export function Frame({ title, subtitle, children }: { title: string; subtitle: string; children: ReactNode }) {
-  return <HeaderContext.Provider value={{ title, subtitle }}><SafeAreaView edges={['top', 'left', 'right']} style={s.safe}><KeyboardAvoidingView style={s.safe} behavior={Platform.OS === 'ios' ? 'padding' : undefined}><View style={s.frame}><CanvasGradient />{children}</View></KeyboardAvoidingView></SafeAreaView></HeaderContext.Provider>;
+  const { contentWidth } = useResponsiveLayout();
+  return <HeaderContext.Provider value={{ title, subtitle }}><SafeAreaView edges={['top', 'left', 'right']} style={s.safe}><KeyboardAvoidingView style={s.safe} behavior={Platform.OS === 'ios' ? 'padding' : undefined}><View style={[s.frame, { maxWidth: contentWidth }]}><CanvasGradient />{children}</View></KeyboardAvoidingView></SafeAreaView></HeaderContext.Provider>;
 }
