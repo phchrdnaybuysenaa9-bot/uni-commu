@@ -63,3 +63,6 @@ The purple-to-black gradient now also appears on authentication welcome panels, 
 
 ## Authentication layout refinement
 Authentication scroll content grows to fill the available viewport. Tablet layouts center the complete authentication shell vertically when it fits; longer forms remain scrollable. Landscape windows at least 768 logical pixels wide use a centered two-pane shell up to 1040 wide with a 24-point gutter. Welcome content sits on the left and the form on the right. Narrow windows and large font scale use the single-column layout. Keyboard avoidance remains active on iOS; native keyboard and iPad validation still require a device.
+
+## Welcome image
+Authentication welcome panels use the local AI-generated campus-welcome-v1.png with a purple overlay from centralized authPhotoShade/authPhotoTint tokens. WelcomeHero keeps text native and falls back to the original gradient if the image fails. The image is illustrative, not an actual campus photograph; prompt and provenance are saved beside the asset.

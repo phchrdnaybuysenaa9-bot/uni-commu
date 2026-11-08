@@ -1,5 +1,6 @@
 import { Checkbox } from '@/components/community/checkbox';
-import { CanvasGradient, GradientSurface } from '@/components/community/gradient-surface';
+import { CanvasGradient } from '@/components/community/gradient-surface';
+import { WelcomeHero } from './welcome-hero';
 import { useState } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -32,7 +33,7 @@ export function AuthScreen() {
     <View style={[a.shell, isWideAuthLayout && a.wideShell]}>
     <View style={a.header}><View style={a.brand}><View style={a.mark}><Icon name="community" color={colors.surface} /></View><Text style={a.wordmark}>UniCommu</Text></View><Pressable accessibilityRole="button" onPress={() => change(step === 'login' ? 'register' : 'login')} style={a.demo}><Text style={a.caption}>{step === 'login' ? 'สมัครสมาชิก' : 'เข้าสู่ระบบ'}</Text></Pressable></View>
     <View style={[a.body, isWideAuthLayout && a.wideBody]}>
-    <GradientSurface style={[a.hero, isWideAuthLayout && a.wideHero]}><Text style={a.title}>{titles[step]}</Text><Text style={a.subtitle}>เรื่องเรียน เรื่องเพื่อน และทุกวันของพวกเรา</Text></GradientSurface>
+    <WelcomeHero title={titles[step]} wide={isWideAuthLayout} />
     <View style={[a.formColumn, isWideAuthLayout && a.wideColumn]}>
     <View style={a.form}><View style={a.formHeading}><Text style={a.formTitle}>{{login:'เข้าสู่ระบบ',register:'สร้างบัญชีใหม่',verify:'ยืนยันอีเมล',profile:'ตั้งค่าโปรไฟล์',forgot:'ลืมรหัสผ่าน'}[step]}</Text><Text style={a.caption}>ข้อมูลจำลอง · ไม่เชื่อมระบบจริง</Text></View>
       {step !== 'profile' && step !== 'verify' && input('อีเมลมหาวิทยาลัย', email, setEmail)}
