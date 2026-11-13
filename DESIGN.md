@@ -66,3 +66,33 @@ Authentication scroll content grows to fill the available viewport. Tablet layou
 
 ## Welcome image
 Authentication welcome panels use the local AI-generated campus-welcome-v1.png with a purple overlay from centralized authPhotoShade/authPhotoTint tokens. WelcomeHero keeps text native and falls back to the original gradient if the image fails. The image is illustrative, not an actual campus photograph; prompt and provenance are saved beside the asset.
+
+## Logo and launch preview (2026-11-12)
+
+The user selected the generated purple UniCommu mark in assets/images/branding/unicommu-logo-v1.png for a trial. BrandLogo shares the PNG between authentication and community headers. Expo icon, favicon and native splash configuration reference the same asset. These native launcher/splash changes require a new app build to validate.
+
+Startup begins with a round purple circle moving from above the viewport to the center with a 650 ms accelerating descent, then expanding to fill the screen, followed by three steps: a centered logo on solid purple, a full purple welcome screen with the brand above Thai copy and campus artwork below, then the existing login screen after pressing เริ่มต้นใช้งาน. LaunchOverlay reveals the centered logo, holds for 400 ms, then moves it to the welcome header over 600 ms while reducing its size from 104 to 80 points. The overlay then fades over 350 ms to reveal the welcome content; the destination respects safe-area insets; reduced motion skips the overlay. The welcome screen remains until the user presses the button. It uses the existing in-memory authentication flow and does not add account persistence. Native device validation is still required.
+
+## Welcome campus video (2026-11-12)
+WelcomeScreen replaces its still artwork with the official RMUTP introduction video (YouTube ID ww4JeFSn2Ew). CampusVideo provides a web iframe and native WebView, loaded after LaunchOverlay completes. The player keeps YouTube controls and has a visible source link. It requests muted inline autoplay and looping; playback depends on device policy and network. No YouTube media is downloaded or rehosted. The native WebView still needs device verification. The AI campus photo remains available for the existing authentication hero.
+
+## Welcome illustration and orbit (2026-11-12)
+Replaces the YouTube trial above: no video player or WebView dependency remains. WelcomeArtwork displays the local Storyset Group discussion PNG with source attribution, without a card frame, and pans up/left 56/24 points while settling from scale 1.08 to 1 over 850 ms after launch completes. Reduced motion shows the still image. LaunchOrbit uses six locally bundled Microsoft Fluent Emoji 3D PNGs to orbit the centered logo through 120 degrees over 1800 ms, counter-rotating each image to keep it upright. The orbit fades before the existing logo-to-header transition. Source and license files live beside the assets.
+
+## Launch scatter refinement (2026-11-12)
+Supersedes the orbit above. Five bundled photographic PNG objects spread out from behind the centered logo over 650 ms, then each turns once over 1400 ms in alternating directions. The group stays in place rather than orbiting. Objects fade over 200 ms before the existing logo-to-header transition. Reduced motion still skips the intro. Asset sources live in assets/images/launch/photos/CREDITS.md. Native-device motion validation remains required.
+
+### Orbit clarification
+After the 650 ms scatter completes, the entire object layer rotates 160 degrees around the stationary centered logo. Each photo counter-rotates to preserve its tilt. The bounded circular reach prevents portrait-screen clipping; the existing fade and logo-to-header transition follow.
+
+### Layered slow orbit
+Objects now travel on independent elliptical arcs of 29–46 degrees over 3200 ms after scattering. Different sizes, alpha and depth-scale changes replace the rigid rotating group; photos retain a gentle tilt. A short Thai explanation appears near the bottom on viewports at least 600 points tall and fades with the objects, before the logo rises. No continuous animation loop is added.
+
+### Cohesive generated launch objects
+LaunchOrbit now consumes five generated 3D product PNG cutouts in generated-v1: a lavender backpack, laptop, basketball, camera and takeaway coffee. All share lavender/ivory materials and studio lighting. Files are optimized to 320px with transparent alpha preserved, and full generation prompts are recorded beside the assets. The approved slow, layered motion is unchanged.
+
+## Photographic login backdrop (2026-11-12)
+Login now uses a single centered mobile-first surface: the existing illustrative campus photo sits behind the header and welcoming text, fading vertically into the white form. LoginHero and LoginBackdrop are separate components outside routes. AuthPhotoFade is a centralized color token with generated CSS. Only login uses this layout; registration, verification and recovery retain their existing responsive layouts and behavior. Existing mock-login notices remain visible. No social sign-in or backend behavior was added.
+
+### Registration shares the photo treatment
+Registration now shares AuthPhotoBackdrop and AuthPhotoHero with login. Its existing heading, all fields, consent, validation, request state and verification flow remain intact. The full form scrolls in one column on phones and tablets. Recovery and verification retain the previous layout.
