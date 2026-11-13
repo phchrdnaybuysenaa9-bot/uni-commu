@@ -6,13 +6,14 @@ import { router } from 'expo-router';
 import { size } from '@/constants/design-tokens';
 import { useResponsiveLayout } from '@/hooks/use-responsive-layout';
 import { Icon } from './icon';
-import { palette, s } from './styles';
+import { BrandLogo } from '@/components/brand-logo';
+import { s } from './styles';
 const HeaderContext = createContext({ title: '', subtitle: '' });
 /** Render inside the screen's list/scroll view so the entire header scrolls naturally. */
 export function PageHeader() {
   const { title, subtitle } = useContext(HeaderContext);
   return <View style={s.pageHeader}>
-    <View style={s.brand}><View style={s.brandMark}><Icon name="community" color={palette.surface} /></View><Text style={s.brandName}>UniCommu</Text><View style={s.badge}><Text style={s.small}>ข้อมูลจำลอง</Text></View><View style={s.grow} /><Pressable accessibilityRole="button" accessibilityLabel="เปิดโปรไฟล์" onPress={() => router.navigate('/profile')} style={[s.avatar, { minWidth: size.touchTarget, minHeight: size.touchTarget }]}><Icon name="profile" large /></Pressable></View>
+    <View style={s.brand}><BrandLogo dimension={size.avatar} /><Text style={s.brandName}>UniCommu</Text><View style={s.badge}><Text style={s.small}>ข้อมูลจำลอง</Text></View><View style={s.grow} /><Pressable accessibilityRole="button" accessibilityLabel="เปิดโปรไฟล์" onPress={() => router.navigate('/profile')} style={[s.avatar, { minWidth: size.touchTarget, minHeight: size.touchTarget }]}><Icon name="profile" large /></Pressable></View>
     <View style={s.heading}><Text accessibilityRole="header" style={s.title}>{title}</Text><Text style={s.canvasMuted}>{subtitle}</Text></View>
   </View>;
 }
