@@ -1,5 +1,5 @@
 import { createHash, createHmac, randomInt } from 'node:crypto';
-import { readJson } from './read-json.mjs';
+import { readJson } from '../http/read-json.mjs';
 import { OtpRequestError, reserveOtpRequest } from './otp-quota.mjs';
 
 export const createEmailOtp = () => String(randomInt(1_000_000)).padStart(6, '0');

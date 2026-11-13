@@ -1,6 +1,6 @@
 import { randomBytes, scrypt } from 'node:crypto';
 import { promisify } from 'node:util';
-import { readJson } from './read-json.mjs';
+import { readJson } from '../http/read-json.mjs';
 import { createEmailOtp, hashChallenge, hashOtp } from './email-otp.mjs';
 import { reserveOtpRequest } from './otp-quota.mjs';
 import { checkRegistrationPassword } from './password-policy.mjs';

@@ -1,9 +1,9 @@
 import { createServer } from 'node:http';
-import { createDatabase } from './database.mjs';
-import { register } from './register.mjs';
-import { verificationPage, verifyEmail } from './verify-email.mjs';
-import { resendOtp } from './email-otp.mjs';
-import { sendEmailOtp } from './email-delivery.mjs';
+import { createDatabase } from './database/connection.mjs';
+import { register } from './auth/register.mjs';
+import { verificationPage, verifyEmail } from './auth/verify-email.mjs';
+import { resendOtp } from './auth/email-otp.mjs';
+import { sendEmailOtp } from './email/email-delivery.mjs';
 
 let pool;
 try {

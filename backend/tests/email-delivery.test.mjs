@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { emailConfiguration, otpMessage } from '../email-delivery.mjs';
+import { emailConfiguration, otpMessage } from '../src/email/email-delivery.mjs';
 
 test('email diagnostics name missing settings without exposing values', () => {
   const result = emailConfiguration({ SMTP_HOST: 'smtp.example.com', SMTP_PASSWORD: 'private-value', SMTP_PORT: 'wrong' });

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { bangkokDay, reserveOtpRequest } from '../otp-quota.mjs';
+import { bangkokDay, reserveOtpRequest } from '../src/auth/otp-quota.mjs';
 
 test('daily boundary is midnight in Thailand, regardless of server timezone', () => {
   assert.equal(bangkokDay(new Date('2026-11-12T16:59:59.999Z')), '2026-11-12');

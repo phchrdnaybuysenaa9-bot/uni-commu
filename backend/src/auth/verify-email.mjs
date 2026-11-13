@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { readJson } from './read-json.mjs';
+import { readJson } from '../http/read-json.mjs';
 import { verifyOtp } from './email-otp.mjs';
 
 export function hashVerificationToken(token) {

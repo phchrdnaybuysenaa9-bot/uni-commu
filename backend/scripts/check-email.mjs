@@ -1,4 +1,4 @@
-import { emailConfiguration, createEmailTransport } from './email-delivery.mjs';
+import { emailConfiguration, createEmailTransport } from '../src/email/email-delivery.mjs';
 
 // Diagnostics only: never sends a message or prints credentials.
 const { missing } = emailConfiguration();

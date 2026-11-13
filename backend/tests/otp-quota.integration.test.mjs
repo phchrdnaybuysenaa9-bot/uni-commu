@@ -1,11 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash, randomUUID } from 'node:crypto';
-import { createDatabase } from '../database.mjs';
-import { reserveOtpRequest } from '../otp-quota.mjs';
+import { createDatabase } from '../src/database/connection.mjs';
+import { reserveOtpRequest } from '../src/auth/otp-quota.mjs';
 import { Readable } from 'node:stream';
-import { register } from '../register.mjs';
-import { resendOtp, verifyOtp } from '../email-otp.mjs';
+import { register } from '../src/auth/register.mjs';
+import { resendOtp, verifyOtp } from '../src/auth/email-otp.mjs';
 
 function request(input) {
   const stream = Readable.from([Buffer.from(JSON.stringify(input))]);

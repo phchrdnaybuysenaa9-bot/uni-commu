@@ -1,8 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { Readable } from 'node:stream';
-import { register } from '../register.mjs';
-import { checkRegistrationPassword } from '../password-policy.mjs';
+import { register } from '../src/auth/register.mjs';
+import { checkRegistrationPassword } from '../src/auth/password-policy.mjs';
 
 function request(password) {
   const stream = Readable.from([Buffer.from(JSON.stringify({
