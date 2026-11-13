@@ -1,0 +1,32 @@
+{
+  "generator": "Built-in image_gen",
+  "created": "2026-11-12",
+  "processing": "PNG scaled to 320px for mobile; alpha preserved. Original generation retained in Codex generated_images.",
+  "assets": [
+    {
+      "name": "backpack",
+      "prompt": "Use case: product-mockup. Create ONE standalone premium realistic 3D product cutout for UniCommu university community app launch animation. Consistent art direction: carefully modeled realistic proportions, tactile matte materials, pearl white and rich lavender purple accents (#7747B8), small charcoal details, soft studio key light from upper left and subtle rim light. Sophisticated modern product photography, not emoji, not toy, not flat vector. Three-quarter view, entirely visible and centered, object fills 78% of a square canvas, generous transparent padding. True transparent alpha background; no ground plane, no cast shadow outside object, no lettering, no logo, no watermark, no extra objects or hands. Readable silhouette at 80px display size. Subject: a beautiful lavender fabric university backpack with white zippers and understated stitched seams, front three-quarter view, tidy rounded silhouette.",
+      "source": "C:\\Users\\Lenovo\\.codex\\generated_images\\01a164b6-8b74-74c3-ab2c-67e3d2b9ea95\\exec-4060a8f1-3e82-4318-b3f1-c4a39b5ff244.png"
+    },
+    {
+      "name": "laptop",
+      "prompt": "Use case: product-mockup. Create ONE standalone premium realistic 3D product cutout for UniCommu university community app launch animation. Consistent art direction: carefully modeled realistic proportions, tactile matte materials, pearl white and rich lavender purple accents (#7747B8), small charcoal details, soft studio key light from upper left and subtle rim light. Sophisticated modern product photography, not emoji, not toy, not flat vector. Three-quarter view, entirely visible and centered, object fills 78% of a square canvas, generous transparent padding. True transparent alpha background; no ground plane, no cast shadow outside object, no lettering, no logo, no watermark, no extra objects or hands. Readable silhouette at 80px display size. Subject: a sleek unbranded open pearl-white laptop with lavender keyboard highlights, charcoal blank screen with a faint purple reflection, no hands, no text.",
+      "source": "C:\\Users\\Lenovo\\.codex\\generated_images\\01a164b6-8b74-74c3-ab2c-67e3d2b9ea95\\exec-fa875c04-93fd-416b-a5b5-00bd8cf462ab.png"
+    },
+    {
+      "name": "basketball",
+      "prompt": "Use case: product-mockup. Create ONE standalone premium realistic 3D product cutout for UniCommu university community app launch animation. Consistent art direction: carefully modeled realistic proportions, tactile matte materials, pearl white and rich lavender purple accents (#7747B8), small charcoal details, soft studio key light from upper left and subtle rim light. Sophisticated modern product photography, not emoji, not toy, not flat vector. Three-quarter view, entirely visible and centered, object fills 78% of a square canvas, generous transparent padding. True transparent alpha background; no ground plane, no cast shadow outside object, no lettering, no logo, no watermark, no extra objects or hands. Readable silhouette at 80px display size. Subject: a realistic basketball redesigned in matte lavender purple and ivory panels with charcoal seams, clean spherical silhouette and tactile rubber grain.",
+      "source": "C:\\Users\\Lenovo\\.codex\\generated_images\\01a164b6-8b74-74c3-ab2c-67e3d2b9ea95\\exec-f490e98c-30c0-458b-9811-ac3d5392f9e2.png"
+    },
+    {
+      "name": "camera",
+      "prompt": "Use case: product-mockup. Create ONE standalone premium realistic 3D product cutout for UniCommu university community app launch animation. Consistent art direction: carefully modeled realistic proportions, tactile matte materials, pearl white and rich lavender purple accents (#7747B8), small charcoal details, soft studio key light from upper left and subtle rim light. Sophisticated modern product photography, not emoji, not toy, not flat vector. Three-quarter view, entirely visible and centered, object fills 78% of a square canvas, generous transparent padding. True transparent alpha background; no ground plane, no cast shadow outside object, no lettering, no logo, no watermark, no extra objects or hands. Readable silhouette at 80px display size. Subject: a compact premium unbranded mirrorless camera, pearl-white body, lavender grip, large dark glass lens with subtle purple optical reflections.",
+      "source": "C:\\Users\\Lenovo\\.codex\\generated_images\\01a164b6-8b74-74c3-ab2c-67e3d2b9ea95\\exec-febb56f3-da73-430a-b411-a7b8d109e83f.png"
+    },
+    {
+      "name": "coffee",
+      "prompt": "Use case: product-mockup. Create ONE standalone premium realistic 3D product cutout for UniCommu university community app launch animation. Consistent art direction: carefully modeled realistic proportions, tactile matte materials, pearl white and rich lavender purple accents (#7747B8), small charcoal details, soft studio key light from upper left and subtle rim light. Sophisticated modern product photography, not emoji, not toy, not flat vector. Three-quarter view, entirely visible and centered, object fills 78% of a square canvas, generous transparent padding. True transparent alpha background; no ground plane, no cast shadow outside object, no lettering, no logo, no watermark, no extra objects or hands. Readable silhouette at 80px display size. Subject: a refined reusable takeaway coffee cup in matte lavender, pearl-white fitted lid and a plain ivory sleeve, upright three-quarter view, no saucer, no text.",
+      "source": "C:\\Users\\Lenovo\\.codex\\generated_images\\01a164b6-8b74-74c3-ab2c-67e3d2b9ea95\\exec-1d24f4e2-db40-4ad4-8a64-38a94f632db8.png"
+    }
+  ]
+}
