@@ -21,6 +21,7 @@
     "photoOverlay": "#18111FD9",
     "authPhotoShade": "#241332D9",
     "authPhotoTint": "#19161F80",
+    "authPhotoFade": "#FFFFFFB8",
     "gradientPurple": "#563573",
     "gradientGray": "#19161F",
     "canvasPurple": "#ECE8F1",

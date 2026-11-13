@@ -1,6 +1,16 @@
 import { StyleSheet } from 'react-native';
 import { colors as c, spacing as sp, radius as r, size, fontSize as f } from '@/constants/design-tokens';
 export const a = StyleSheet.create({
+ signupPrompt:{fontSize:f.label,lineHeight:22,color:c.muted},
+ loginSafe:{backgroundColor:c.surface},
+ loginScroll:{padding:0,paddingBottom:sp.xxxl},
+ loginShell:{gap:0,backgroundColor:c.surface},
+ loginHeader:{paddingHorizontal:sp.xxl,paddingTop:sp.xl},
+ loginWordmark:{color:c.surface},
+ loginBody:{gap:0},
+ loginForm:{backgroundColor:c.surface,borderRadius:0,paddingHorizontal:sp.xxl,paddingTop:sp.sm,gap:sp.lg},
+ loginFormHeading:{alignItems:'center'},
+ loginFormTitle:{fontSize:f.section},
  shell:{width:'100%',maxWidth:size.contentWidth,alignSelf:'center',gap:sp.lg},
  wideShell:{maxWidth:size.authWideWidth,gap:sp.xxl},
  body:{gap:sp.lg},

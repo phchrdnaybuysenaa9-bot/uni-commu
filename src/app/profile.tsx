@@ -19,7 +19,7 @@ export default function ProfileScreen() {
       <PageHeader />
       <GradientSurface style={p.hero}>
         <View style={p.identity}><View style={p.avatar}><Icon name="profile" large /></View><View style={p.info}><Text style={p.name}>{name}</Text><Text style={p.heroMeta}>นักศึกษา</Text><Text style={p.heroMeta}>วิทยาศาสตร์และเทคโนโลยี</Text></View></View>
-        <View style={p.privacy}><Icon name="shield" /><Text style={[p.heroMeta, s.grow]}>อีเมลไม่แสดงต่อสาธารณะ{ '\n' }บัญชีและการยืนยันเป็นข้อมูลจำลอง</Text></View>
+        <View style={p.privacy}><Icon name="shield" /><Text style={[p.heroMeta, s.grow]}>อีเมลของคุณไม่แสดงต่อสาธารณะ</Text></View>
         <Action icon="edit" label={editing ? 'ยกเลิกแก้ไข' : 'แก้ไขชื่อแสดงผล'} primary onPress={() => { setDraft(name); setEditing(!editing); }} />
         {editing && <View style={p.section}><Field placeholder="ชื่อแสดงผล" value={draft} onChangeText={setDraft} multiline /><Action label="บันทึกชื่อ" primary disabled={!draft.trim()} onPress={() => { setName(draft.trim()); setEditing(false); }} /></View>}
         <View style={p.stats}>{[[demo.saved.length, 'บันทึกไว้'], [demo.liked.length, 'ถูกใจ'], [demo.following.length, 'ติดตามเพจ']].map(([count, label]) => <View key={label} style={p.stat}><Text style={p.count}>{count}</Text><Text style={p.statLabel}>{label}</Text></View>)}</View>
@@ -36,7 +36,7 @@ export default function ProfileScreen() {
         <Link href="/notifications" asChild><Pressable style={p.page}><Icon name="bell" /><Text style={[p.pageName, s.grow]}>การแจ้งเตือนของฉัน</Text><Icon name="arrow" /></Pressable></Link>
         <Link href="/saved" asChild><Pressable style={StyleSheet.flatten([p.page, p.last])}><Icon name="bookmark" /><Text style={[p.pageName, s.grow]}>รายการที่บันทึก</Text><Icon name="arrow" /></Pressable></Link>
       </View></View>
-      <View style={p.footer}><Action label="ออกจากระบบจำลอง" icon="arrow" onPress={logout} /><Text style={s.canvasSmall}>UniCommu · ข้อมูลจำลอง</Text><Link href="https://icons8.com" style={s.canvasSmall}>Icons by Icons8</Link></View>
+      <View style={p.footer}><Action label="ออกจากระบบ" onPress={logout} /><Text style={s.canvasSmall}>UniCommu · ข้อมูลจำลอง</Text><Link href="https://icons8.com" style={s.canvasSmall}>Icons by Icons8</Link></View>
     </ScrollView>
   </Frame>;
 }
