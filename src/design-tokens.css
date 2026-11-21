@@ -26,6 +26,9 @@
   --colors-gradient-gray: #19161F;
   --colors-canvas-purple: #ECE8F1;
   --colors-canvas-gray: #F1F2F3;
+  --colors-navigation-glass: #241B30ED;
+  --colors-navigation-border: #FFFFFF24;
+  --colors-navigation-highlight: #FFFFFF26;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 12px;

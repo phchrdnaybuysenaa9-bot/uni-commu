@@ -1,4 +1,4 @@
-export type PostPhoto = 'study' | 'people';
+export type PostPhoto = 'study' | 'people' | { uri: string; width: number; height: number };
 export type ContentItem = {
   id: string;
   kind: 'post' | 'announcement';
@@ -10,6 +10,12 @@ export type ContentItem = {
   tags: string[];
   date: string;
   likes: number;
+  authorId?: string;
+  createdAt?: string;
+  commentCount?: number;
+  live?: boolean;
+  faculties?: { id: string; name: string }[];
+  programs?: { id: string; name: string; facultyId: string }[];
   verified?: boolean;
   urgent?: boolean;
   pinned?: boolean;

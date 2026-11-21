@@ -9,3 +9,44 @@
   --font-rounded: 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif;
   --font-serif: Georgia, 'Times New Roman', serif;
 }
+
+/* Pointer taps do not need the keyboard navigation outline. */
+[data-post-action]:focus:not(:focus-visible) {
+  outline: none;
+}
+
+[data-post-action]:focus-visible {
+  outline: 2px solid var(--colors-purple);
+  outline-offset: 2px;
+}
+
+[data-post-action='dark']:focus-visible {
+  outline-color: var(--colors-night-text);
+}
+
+[data-post-action][data-pointer-focus='true']:focus {
+  outline: none;
+}
+
+[data-navigation-glass] {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+[data-navigation-tab]:focus:not(:focus-visible),
+[data-navigation-tab][data-pointer-focus='true']:focus {
+  outline: none;
+}
+
+[data-navigation-tab]:focus-visible {
+  outline: 2px solid var(--colors-night-text);
+  outline-offset: -2px;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  [data-navigation-glass] {
+    background-color: var(--colors-gradient-gray);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

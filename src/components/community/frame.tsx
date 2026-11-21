@@ -1,9 +1,10 @@
-import { CanvasGradient } from './gradient-surface';
+import { StatusBar } from 'expo-status-bar';
 import { createContext, useContext, type ReactNode } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
-import { size } from '@/constants/design-tokens';
+import { colors, fontSize, size, spacing } from '@/constants/design-tokens';
+import { useDemo } from '@/features/community/demo-context';
 import { useResponsiveLayout } from '@/hooks/use-responsive-layout';
 import { Icon } from './icon';
 import { BrandLogo } from '@/components/brand-logo';
@@ -17,7 +18,10 @@ export function PageHeader() {
     <View style={s.heading}><Text accessibilityRole="header" style={s.title}>{title}</Text><Text style={s.canvasMuted}>{subtitle}</Text></View>
   </View>;
 }
-export function Frame({ title, subtitle, children }: { title: string; subtitle: string; children: ReactNode }) {
+export function Frame({ title, subtitle, children, maxWidth }: { title: string; subtitle: string; children: ReactNode; maxWidth?: number }) {
   const { contentWidth } = useResponsiveLayout();
-  return <HeaderContext.Provider value={{ title, subtitle }}><SafeAreaView edges={['top', 'left', 'right']} style={s.safe}><KeyboardAvoidingView style={s.safe} behavior={Platform.OS === 'ios' ? 'padding' : undefined}><View style={[s.frame, { maxWidth: contentWidth }]}><CanvasGradient />{children}</View></KeyboardAvoidingView></SafeAreaView></HeaderContext.Provider>;
+  const community=useDemo();
+  return <HeaderContext.Provider value={{ title, subtitle }}><SafeAreaView edges={['top', 'left', 'right']} style={s.safe}><StatusBar style="light" /><KeyboardAvoidingView style={s.safe} behavior={Platform.OS === 'ios' ? 'padding' : undefined}><View style={[s.frame, { maxWidth: maxWidth ?? contentWidth }]}>
+    {!!community.error && <View style={{padding:spacing.md,backgroundColor:colors.gradientPurple}}><Text accessibilityLiveRegion="assertive" style={{color:colors.nightText,fontSize:fontSize.label}}>{community.error}</Text><Pressable accessibilityRole="button" onPress={()=>void community.refresh()} style={{minHeight:size.touchTarget,justifyContent:'center'}}><Text style={{color:colors.selected}}>โหลดใหม่</Text></Pressable></View>}
+    {children}</View></KeyboardAvoidingView></SafeAreaView></HeaderContext.Provider>;
 }

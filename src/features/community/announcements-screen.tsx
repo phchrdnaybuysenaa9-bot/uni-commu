@@ -15,7 +15,7 @@ export function AnnouncementsScreen() {
   const reset = () => { setQuery(''); setFaculty('ทุกคณะ'); setCategory('ทั้งหมด'); setDate('ทุกช่วงเวลา'); };
   return <Frame title="ประกาศและข่าวสารทางการ" subtitle="ข่าวสารจากหน่วยงาน ตรงถึงคุณ"><ContentList items={items} emptyText="ไม่พบประกาศ ลองล้างตัวกรองหรือเปลี่ยนคำค้น" header={<View style={s.section}>
     <Field placeholder="ค้นหาประกาศ หน่วยงาน หรือ #แท็ก" value={query} onChangeText={setQuery} />
-    <View style={s.row}><Action icon="filter" label="ตัวกรอง" selected={filters} onPress={() => setFilters(true)} /><Action label="ล้างตัวกรอง" onPress={reset} /></View>
+    <View style={s.row}><Action dark icon="filter" label="ตัวกรอง" selected={filters} onPress={() => setFilters(true)} /><Action dark label="ล้างตัวกรอง" onPress={reset} /></View>
 
     <Text style={s.canvasSmall}>{items.length} ประกาศ · {faculty} · {category} · {date}</Text>
     <Text style={s.canvasMuted}>ประกาศปักหมุดแสดงก่อน · การรับรองและเนื้อหาทั้งหมดเป็นตัวอย่าง</Text>

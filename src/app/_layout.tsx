@@ -9,6 +9,7 @@ import { Tabs } from 'expo-router';
 import { View, type ColorValue } from 'react-native';
 import { Icon, type IconName } from '@/components/community/icon';
 import { DemoProvider, useDemo } from '@/features/community/demo-context';
+import { CommentsProvider } from '@/features/community/comments-context';
 import { useResponsiveLayout } from '@/hooks/use-responsive-layout';
 function Navigation() {
   const insets = useSafeAreaInsets();
@@ -29,4 +30,4 @@ function Navigation() {
     <Tabs.Screen name="explore" options={{ href: null }} />
   </Tabs>;
 }
-export default function RootLayout() { return <AuthProvider><DemoProvider><Navigation /></DemoProvider></AuthProvider>; }
+export default function RootLayout() { return <AuthProvider><DemoProvider><CommentsProvider><Navigation /></CommentsProvider></DemoProvider></AuthProvider>; }

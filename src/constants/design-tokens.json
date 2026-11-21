@@ -25,7 +25,10 @@
     "gradientPurple": "#563573",
     "gradientGray": "#19161F",
     "canvasPurple": "#ECE8F1",
-    "canvasGray": "#F1F2F3"
+    "canvasGray": "#F1F2F3",
+    "navigationGlass": "#241B30ED",
+    "navigationBorder": "#FFFFFF24",
+    "navigationHighlight": "#FFFFFF26"
   },
   "spacing": {
     "xs": 4,

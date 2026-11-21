@@ -10,8 +10,8 @@ export default function NotificationsScreen() {
   const items = all.filter(i => filter !== 'ยังไม่อ่าน' || !demo.read.includes(i.id));
   const unread = all.filter(i => !demo.read.includes(i.id)).length;
   return <Frame title={`การแจ้งเตือน (${unread})`} subtitle="ข่าวด่วนและข่าวจากเพจที่คุณติดตาม"><ScrollView contentContainerStyle={s.scroll}><PageHeader /><AccentBanner icon="bell" title={unread ? `มี ${unread} ข่าวที่ยังไม่ได้อ่าน` : 'อ่านข่าวครบแล้ว'} subtitle="ข่าวด่วนและข่าวจากเพจที่ติดตาม · ข้อมูลจำลอง" />
-    <Action icon="check" label="ทำเครื่องหมายอ่านแล้วทั้งหมด" onPress={() => all.forEach(i => demo.markRead(i.id))} disabled={!unread} />
-    <Chips values={['ทั้งหมด', 'ประกาศทางการ', 'ยังไม่อ่าน']} value={filter} onChange={setFilter} />
+    <Action dark icon="check" label="ทำเครื่องหมายอ่านแล้วทั้งหมด" onPress={() => all.forEach(i => demo.markRead(i.id))} disabled={!unread} />
+    <Chips dark values={['ทั้งหมด', 'ประกาศทางการ', 'ยังไม่อ่าน']} value={filter} onChange={setFilter} />
     <Text style={s.canvasSectionTitle}>ล่าสุด</Text>
     {!items.length && <Empty text="อ่านครบแล้ว กลับมาตรวจข่าวสารใหม่ได้ภายหลัง" />}
     {items.map(i => <Pressable accessibilityRole="button" accessibilityLabel={`${demo.read.includes(i.id) ? 'อ่านแล้ว' : 'ยังไม่อ่าน'} ${i.title}`} key={i.id} onPress={() => demo.markRead(i.id)} style={[s.notification, !demo.read.includes(i.id) && s.unread, i.urgent && s.urgentCard]}>
