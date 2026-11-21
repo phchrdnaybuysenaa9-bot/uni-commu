@@ -9,7 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Action } from '@/components/community';
 import { colors } from '@/constants/design-tokens';
 import { useAuth } from './auth-context';
-import { confirmEmail, registerAccount, resendEmailOtp, usesTestOtp } from './registration-api';
+import { confirmEmail, loginAccount, registerAccount, resendEmailOtp, usesTestOtp } from './registration-api';
 import { a } from './styles';
 import { OtpCodeInput } from './otp-code-input';
 import { useResponsiveLayout } from '@/hooks/use-responsive-layout';
@@ -32,8 +32,10 @@ export function AuthScreen({ initialStep = 'login' }: { initialStep?: 'login' | 
   function change(next: Step) {
     setStep(next);
     setError('');
-    setPassword('');
-    setConfirm('');
+    if (next !== 'verify') {
+      setPassword('');
+      setConfirm('');
+    }
     setShow(false);
     setVerified(false);
     setCode('');
@@ -72,9 +74,14 @@ export function AuthScreen({ initialStep = 'login' }: { initialStep?: 'login' | 
         setChallenge('');
         setCode('');
         setTestCode('');
-        setPassword('');
-        setConfirm('');
-        enter(name.trim());
+        try {
+          enter(await loginAccount(email.trim(), password));
+          setPassword('');
+          setConfirm('');
+        } catch {
+          change('login');
+          setError('ยืนยันอีเมลสำเร็จแล้ว กรุณาเข้าสู่ระบบด้วยอีเมลและรหัสผ่านของคุณ');
+        }
       } catch (error) {
         setError(error instanceof Error ? error.message : 'ยืนยันอีเมลไม่สำเร็จ กรุณาลองอีกครั้ง');
       } finally {
@@ -84,8 +91,8 @@ export function AuthScreen({ initialStep = 'login' }: { initialStep?: 'login' | 
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return setError('กรุณากรอกอีเมลให้ถูกต้อง');
     if (step === 'forgot') return setError('บริการตั้งรหัสผ่านใหม่ยังไม่เปิดใช้งาน กรุณาลองอีกครั้งภายหลัง');
+    if (!email.trim().toLowerCase().endsWith('@rmutp.ac.th')) return setError('กรุณาใช้อีเมลมหาวิทยาลัย @rmutp.ac.th');
     if (step === 'register') {
-      if (!email.trim().toLowerCase().endsWith('@rmutp.ac.th')) return setError('กรุณาใช้อีเมลมหาวิทยาลัย @rmutp.ac.th');
       if (!name.trim()) return setError('กรุณากรอกชื่อแสดงผล');
       const passwordLength = [...password.normalize('NFC')].length;
       if (passwordLength < 9) return setError('กรุณาใช้รหัสผ่านอย่างน้อย 9 ตัวอักษร เช่น วลีหลายคำที่จำง่าย');
@@ -105,8 +112,16 @@ export function AuthScreen({ initialStep = 'login' }: { initialStep?: 'login' | 
       }
       return;
     }
-    if (password.length < 8) return setError('กรุณากรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร');
-    setPassword(''); enter();
+    if (!password) return setError('กรุณากรอกรหัสผ่าน');
+    setBusy(true);
+    try {
+      enter(await loginAccount(email.trim(), password));
+      setPassword('');
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองอีกครั้ง');
+    } finally {
+      setBusy(false);
+    }
   }
   const titles: Record<Step, string> = { login: 'พื้นที่ของคุณ\nในรั้วมหาวิทยาลัย', register: 'เรื่องดี ๆ เริ่มที่\nการรู้จักกัน', verify: 'อีกนิดเดียว\nก็ได้เจอกันแล้ว', forgot: 'กลับมาคุยกัน\nได้เสมอ' };
   function input(label: string, value: string, set: (v: string) => void, secure = false) {

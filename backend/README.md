@@ -33,3 +33,5 @@ Integration tests ที่ต่อฐานข้อมูลต้องเ�
 
 สคริปต์สร้างตารางอยู่ที่ `database/migrations/` สำหรับ MySQL และ
 `supabase/migrations/` สำหรับ PostgreSQL โดยอ้างอิงจากโฟลเดอร์หลักของโปรเจกต์
+
+ดูการทำงานของล็อกอินและ session ที่ [คู่มือล็อกอิน](docs/LOGIN.md)

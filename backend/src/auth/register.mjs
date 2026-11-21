@@ -4,18 +4,18 @@ import { readJson } from '../http/read-json.mjs';
 import { createEmailOtp, hashChallenge, hashOtp } from './email-otp.mjs';
 import { reserveOtpRequest } from './otp-quota.mjs';
 import { checkRegistrationPassword } from './password-policy.mjs';
+import { normalizeUniversityEmail } from './university-email.mjs';
 
 const deriveKey = promisify(scrypt);
 const scryptOptions = { N: 32768, r: 8, p: 3, maxmem: 64 * 1024 * 1024 };
-const universityEmail = /^[a-z0-9_+%-]+(?:\.[a-z0-9_+%-]+)*@rmutp\.ac\.th$/;
 
 export async function register(request, pool, deliver, local) {
   const result = await readJson(request);
   if (result.status) return result;
   const { input } = result;
 
-  const email = typeof input?.email === 'string' ? input.email.trim().toLowerCase() : '';
-  if (email.length > 76 || !universityEmail.test(email)) {
+  const email = normalizeUniversityEmail(input?.email);
+  if (!email) {
     return { status: 400, body: { error: 'university_email_required' } };
   }
 
