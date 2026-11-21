@@ -26,12 +26,22 @@ services:
         sync: false
       - key: SMTP_FROM
         sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
 
   - type: web
     name: unicommu-web
     runtime: static
     buildCommand: npm ci --include=dev && npx expo export --platform web
     staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /post/*
+        destination: /index.html
     envVars:
       - key: NODE_VERSION
         value: 24.22.0
