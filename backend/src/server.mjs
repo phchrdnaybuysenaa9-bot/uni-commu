@@ -6,6 +6,8 @@ import { resendOtp } from './auth/email-otp.mjs';
 import { sendEmailOtp } from './email/email-delivery.mjs';
 import { createLoginHandler } from './auth/login.mjs';
 import { currentSession, logout } from './auth/session.mjs';
+import { createCommunityHandler } from './community/routes.mjs';
+import { createPostStorage } from './community/storage.mjs';
 
 let pool;
 try {
@@ -20,23 +22,30 @@ const port = Number(process.env.PORT ?? 3001);
 const address = `${host}:${port}`;
 const devCodes = host === '127.0.0.1' && process.env.DEV_EMAIL_VERIFICATION === 'true' && process.env.NODE_ENV !== 'production';
 const login = createLoginHandler();
+const community = createCommunityHandler(createPostStorage());
 
 createServer(async (request, response) => {
   response.setHeader('Content-Type', 'application/json; charset=utf-8');
   response.setHeader('Cache-Control', 'no-store');
 
-  if (['/auth/register', '/auth/verify-email', '/auth/resend-otp', '/auth/login', '/auth/session', '/auth/logout'].includes(request.url)) {
+  if (request.url.startsWith('/community/') || ['/auth/register', '/auth/verify-email', '/auth/resend-otp', '/auth/login', '/auth/session', '/auth/logout'].includes(request.url)) {
     const origin = request.headers.origin;
     response.setHeader('Vary', 'Origin');
     if (origin && (origin === process.env.WEB_ORIGIN || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin))) {
       response.setHeader('Access-Control-Allow-Origin', origin);
-      response.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+      response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
       response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-UniCommu-Verification');
     }
     if (request.method === 'OPTIONS') {
       response.writeHead(204).end();
       return;
     }
+  }
+
+  if (request.url.startsWith('/community/')) {
+    const { status, body } = await community(request, pool);
+    response.writeHead(status).end(JSON.stringify(body));
+    return;
   }
 
   const authHandler = request.method === 'POST' && request.url === '/auth/login' ? login

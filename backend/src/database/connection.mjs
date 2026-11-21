@@ -32,7 +32,13 @@ export function createDatabase(env) {
         const client = await pool.connect();
         try {
           await client.query('BEGIN');
-          const value = await work({ ...database, execute: (sql, params) => executeWith(client, sql, params) });
+          let pending = Promise.resolve();
+          const execute = (sql, params) => {
+            const next = pending.then(() => executeWith(client, sql, params));
+            pending = next.catch(() => {});
+            return next;
+          };
+          const value = await work({ ...database, execute });
           await client.query('COMMIT');
           return value;
         } catch (error) {

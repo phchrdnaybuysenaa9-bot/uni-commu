@@ -35,3 +35,5 @@ Integration tests ที่ต่อฐานข้อมูลต้องเ�
 `supabase/migrations/` สำหรับ PostgreSQL โดยอ้างอิงจากโฟลเดอร์หลักของโปรเจกต์
 
 ดูการทำงานของล็อกอินและ session ที่ [คู่มือล็อกอิน](docs/LOGIN.md)
+
+ดูตาราง ฟีด โพสต์ ไลก์ ความคิดเห็น บันทึก สิทธิ์สโม และการตั้งค่ารูปที่ [คู่มือ Community API](docs/COMMUNITY.md)

@@ -1,4 +1,4 @@
-export async function readJson(request) {
+export async function readJson(request, maxBytes = 8192) {
   const contentType = request.headers['content-type']?.split(';', 1)[0].trim().toLowerCase();
   if (contentType !== 'application/json') {
     return { status: 415, body: { error: 'json_required' } };
@@ -9,7 +9,7 @@ export async function readJson(request) {
     let size = 0;
     for await (const chunk of request.iterator({ destroyOnReturn: false })) {
       size += chunk.length;
-      if (size > 8192) {
+      if (size > maxBytes) {
         request.resume();
         return { status: 413, body: { error: 'body_too_large' } };
       }
